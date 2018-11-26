@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ArrayOfPerson xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Person>
+    <name>David</name>
+    <surname>Viktorovich</surname>
+    <age>20</age>
+    <image_way>F:\pictures\693280.jpg</image_way>
+    <number>+38063812314</number>
+    <persons_count>1</persons_count>
+  </Person>
+  <Person>
+    <name>Vladislav</name>
+    <surname>Savitskiy</surname>
+    <age>20</age>
+    <image_way>F:\pictures\mq5dbio3x5e11.jpg</image_way>
+    <number>+380465345342</number>
+    <persons_count>4</persons_count>
+  </Person>
+  <Person>
+    <name>Slavik</name>
+    <surname>Apostrof</surname>
+    <age>18</age>
+    <image_way>F:\pictures\photo_2018-11-23_08-29-31.jpg</image_way>
+    <number>+380465345342</number>
+    <persons_count>5</persons_count>
+  </Person>
+</ArrayOfPerson>

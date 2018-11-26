@@ -1,0 +1,120 @@
+﻿<Window x:Class="PersonList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonList"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="430" Width="924">
+    <Window.Resources>
+        <CollectionViewSource x:Key="ItemCollectionViewSource" CollectionViewType="ListCollectionView"/>
+    </Window.Resources>
+    
+    
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel.Background>
+                <!--Set own way to picture-->
+                <ImageBrush ImageSource="F:\pictures\nADSZB7-gradient-wallpapers.jpg" Stretch="UniformToFill"/>
+            </StackPanel.Background>
+            <!--______________________-->
+            <Menu Height="25" VerticalAlignment="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="Open File" Click="MenuItem_Click_3" ></MenuItem>
+                    <MenuItem Header="Save File" Click="MenuItem_Click_1" ></MenuItem>
+                    <Separator />
+                    <MenuItem Header="Exit" Click="MenuItem_Click_2" ></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Edit" >
+                    <MenuItem Header="Deleta all" Click="MenuItem_Click_4"></MenuItem>
+                    <MenuItem Header="Delete current" Click="MenuItem_Click_5"></MenuItem>
+
+                </MenuItem>
+                <MenuItem x:Name="ViewMenu" Header="View person" Click="ViewMenu_Click"></MenuItem>
+                <MenuItem Header="Exit" Click="MenuItem_Click_2"></MenuItem>
+            </Menu>
+
+            <Grid ShowGridLines="False"  Margin="10,20,10,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="addPersonMenu" Grid.Column="0">
+                    <Label>Name</Label>
+                    <TextBox Name="name" ></TextBox>
+                    <Label>Surname</Label>
+                    <TextBox Name="Surname"></TextBox>
+                    <Label>Age</Label>
+                    <TextBox Name="Age"></TextBox>
+                    <Label>Phone</Label>
+                    <TextBox Name="Number" ></TextBox>
+                    <Label>Image way</Label>
+                    <TextBox Name="ImageWay" IsReadOnly="True"></TextBox>
+                    <Button Name="btnOpenFile" Click="btnOpenFile_Click">Open file</Button>
+                    <Image Name="PersonImage" Stretch="Fill"></Image>
+                    <Button Height="20" Click="Button_Click">Create person</Button>
+                </StackPanel>
+
+                <ListView Grid.Column="1" x:Name="PersonsList" Width="660" Visibility="Visible" >
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="50" Header="ID" DisplayMemberBinding="{Binding Path=persons_count}"></GridViewColumn>
+                            <GridViewColumn Width="160" Header="Name" DisplayMemberBinding="{Binding Path=name}"></GridViewColumn>
+                            <GridViewColumn Width="200" Header="Surname" DisplayMemberBinding="{Binding Path=surname}"></GridViewColumn>
+                            <GridViewColumn Width="200" Header="Phone" DisplayMemberBinding="{Binding Path=number}"></GridViewColumn>
+                            <GridViewColumn Width="50" Header="Age" DisplayMemberBinding="{Binding Path=age}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Grid x:Name="ViewCurrentPerson" Grid.Column="1" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" >
+                        <Label Margin="90,30,90,0" HorizontalAlignment="Center">Name:</Label>
+                        <TextBox x:Name="currentName" Margin="90,0,90,0"></TextBox>
+                        <Label Margin="90,0,90,0" HorizontalAlignment="Center">Surname:</Label>
+                        <TextBox x:Name="currentSurname" Margin="90,0,90,0"></TextBox>
+                        <Label Margin="90,0,90,0" HorizontalAlignment="Center">Age:</Label>
+                        <TextBox x:Name="currentAge" Margin="90,0,90,0"></TextBox>
+                        <Label Margin="90,0,90,0" HorizontalAlignment="Center">Phone:</Label>
+                        <TextBox x:Name="currentPhone" Margin="90,0,90,20"></TextBox>
+                        <Button Height="20" Width="200" Click="Button_Click_2">Change image</Button>
+                        
+                    </StackPanel>
+
+                    <Image Grid.Column="1" x:Name="ImageCurrentPerson"></Image>
+                    <TextBox x:Name="currentImage" Visibility="Hidden"></TextBox>
+
+                </Grid>
+
+                <Grid x:Name="EditMenu" Grid.Column="0" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Height="30" Width="100" Click="Button_Click_1">Back</Button>
+                    <Button Grid.Row="1" Height="30" Width="100" Click="Button_Click_3">Save Changes</Button>
+                </Grid>
+
+
+            </Grid>
+        </StackPanel>
+      
+    </Grid>
+</Window>
